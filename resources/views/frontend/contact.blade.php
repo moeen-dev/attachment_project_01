@@ -1,4 +1,5 @@
 @extends('layouts.frontend')
+@section('title', 'Contact')
 @section('content')
 <header class="py-5">
     <div class="container px-lg-5">
@@ -36,6 +37,13 @@
                             <div class="mb-3">
                                 <label for="message" class="form-label fw-bold">Message</label>
                                 <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">
+                                    What is {{ $num1 }} + {{ $num2 }}?
+                                </label>
+                                <input type="number" name="captcha_answer" class="form-control" placeholder="Enter your answer" required>
+                                <input type="hidden" name="captcha_sum" value="{{ $num1 + $num2 }}">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary px-4">Send Message</button>

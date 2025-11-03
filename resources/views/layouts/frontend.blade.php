@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>@yield('title') - Heroic Features - Start Bootstrap Template</title>
+    <title>@yield('title') - Attachment Project for mastering using blade</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{ url('frontend/assets/favicon.ico') }}" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -27,7 +27,7 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link {{ Route::is('home') ? 'active' : ''}}" aria-current="page" href="{{ route('home') }}">Home</a></li>
                     <li class="nav-item"><a class="nav-link {{ Route::is('about') ? 'active' : ''}}" href="{{ route('about') }}">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link {{ Route::is('contact') ? 'active' : ''}}" href="{{ route('contact') }}">Contact</a></li>
                 </ul>
             </div>
         </div>

@@ -1,4 +1,5 @@
 @extends('layouts.frontend')
+@section('title', 'About')
 @section('content')
 
 <header class="py-5">
