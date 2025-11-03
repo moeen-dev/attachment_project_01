@@ -28,15 +28,21 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label fw-bold">Your Name</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
+                                @if($errors->has('name'))
+                                <small style="color: red">{{ $errors->first('name')}}</small>
+                                @endif
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label fw-bold">Email address</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
+                                @if($errors->has('email'))
+                                <small style="color: red">{{ $errors->first('email')}}</small>
+                                @endif
                             </div>
                             <div class="mb-3">
                                 <label for="message" class="form-label fw-bold">Message</label>
-                                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                <textarea class="form-control" id="message" name="message" rows="5" required>{{ old('message') }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label fw-bold">

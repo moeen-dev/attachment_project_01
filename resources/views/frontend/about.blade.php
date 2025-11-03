@@ -17,28 +17,43 @@
 <section class="py-5 bg-light">
     <div class="container px-lg-5">
         <div class="text-center mb-5">
-            <h1 class="fw-bold">About Us</h1>
-            <p class="lead text-muted">Learn more about who we are and what we do.</p>
+            <h1 class="fw-bold">Messages Received</h1>
+            <p class="lead text-muted">Here are the latest messages sent through the contact form.</p>
         </div>
 
-        <div class="row gx-lg-5 align-items-center">
-            <div class="col-lg-6 mb-5 mb-lg-0">
-                <img src="https://via.placeholder.com/600x400" class="img-fluid rounded-3 shadow-sm" alt="About Image">
+        @if($messages->count())
+        <div class="row g-4">
+            @foreach($messages as $message)
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm border-0 rounded-3 h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold text-primary mb-2">
+                            {{ $message->name }}
+                        </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            {{ $message->email }}
+                        </h6>
+                        <p class="card-text text-secondary flex-grow-1">
+                            {{ Str::limit($message->message, 150, '...') }}
+                        </p>
+                        <div class="mt-3 d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                Sent {{ $message->created_at->diffForHumans() }}
+                            </small>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-6">
-                <h2 class="fs-3 fw-bold mb-3">We build modern, scalable web solutions</h2>
-                <p class="text-muted mb-3">
-                    Our mission is to create user-friendly and robust web applications that help businesses grow.
-                    We specialize in Laravel, Bootstrap, and other modern web technologies to deliver high-quality
-                    results.
-                </p>
-                <p class="text-muted">
-                    Since our founding, we’ve worked with clients across industries to build custom digital solutions
-                    that empower innovation and growth.
-                </p>
-                <a href="{{ route('contact') }}" class="btn btn-primary mt-3">Get in Touch</a>
+            @endforeach
+        </div>
+        @else
+        <div class="text-center py-5">
+            <div class="alert alert-info shadow-sm d-inline-block">
+                <strong>No messages yet.</strong> Messages will appear here when someone contacts you.
+                <a href="{{ route('contact') }}" class="btn btn-info">Contact Now</a>
             </div>
         </div>
+        @endif
     </div>
 </section>
 

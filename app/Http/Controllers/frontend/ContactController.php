@@ -18,7 +18,7 @@ class ContactController extends Controller
     public function submitContact(Request $request) {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:contact_forms,email',
             'message' => 'required|string',
             'captcha_sum' => 'required|numeric',
             'captcha_answer' => 'required|numeric'
@@ -36,6 +36,6 @@ class ContactController extends Controller
         ]);
 
         flash()->success('Message Submitted Successfully!!!');
-        return back();
+        return redirect()->route('about');
     }
 }
