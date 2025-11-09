@@ -16,7 +16,7 @@ class ContactController extends Controller
     }
 
     public function submitContact(Request $request) {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:contact_forms,email',
             'message' => 'required|string',
@@ -29,11 +29,7 @@ class ContactController extends Controller
             return back();
         }
 
-        ContactForm::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'message' => $request->message,
-        ]);
+        ContactForm::create($validated);
 
         flash()->success('Message Submitted Successfully!!!');
         return redirect()->route('about');
